@@ -27,8 +27,3 @@ CREATE TABLE employee (
     CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE SET NULL
 );
  
- db.query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.dept_name, role.salary, CONCAT(manager_id.first_name, ' ', manager_id.last_name) AS manager_id FROM employee LEFT JOIN role ON role.id = employee.role_id JOIN department ON department.id = role.dept_id LEFT JOIN employee manager_id ON employee.manager_id = manager.id", (err, data) => {
-        console.table(data)
-        init()
-    })
-}
