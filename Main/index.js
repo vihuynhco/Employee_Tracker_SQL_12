@@ -220,12 +220,52 @@ function addEmployee() {
   });
 }
 
-// function updateEmployeeRole(){
-//   db.query("SELECT*FROM role", (err, result) => {
-//    console.log(updateEmployeeRole)
-// });
-// }
+//query first_name and last_name to display `${first_name} ${last_name}`
+function updateEmployee(){
+  db.query("SELECT*FROM employee", (err, result) => {
+    const db_employeeList = result;
+    const db_employeeRole = result;
+    //destructuring
+  const employeeList = db_employeeList.map(({ id, first_name, last_name }) => ({
+    name: `${first_name} ${last_name}`,
+    value: id,
+  }));
+  const employeeRole = db_employeeRole.map(({ id, title}) => ({
+    name: title,
+    value: id,
+  }));
+  inquirer
+  .prompt([
+    {
+      type: "list",
+      message: "Who do you want to update?",
+      name: "employee_id",
+      choices: employeeList,
+    },
+    {
+      type: "list",
+      message: "What is their new role?",
+      name: "title",
+      choices: employeeRole,
+    },
+  ])
+  .then((answer) => {
+    db.query(
+      "UPDATE employee SET role_id = ? WHERE id = ?",
+      [
+        answer.role_id,
+        answer.employee_id
+      ],
+      (err, res) => {
+        if (err) throw err;
+        console.log("Employe successfully Updated!");
+        init();
+      }
+    );
+  });
 
+  });
+};
 
 function init() {
   inquirer
