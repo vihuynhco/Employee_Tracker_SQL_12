@@ -4,6 +4,8 @@
 
   The purpose of this application is to allow a company to manage their departments, roles, and employees for their company, using the command-line to run thier queries.  With this Content management system, users can view all departments, roles, and employees, add new departments, roles, and employees, and update an employee's role.
 
+  link to demo: <https://watch.screencastify.com/v/8TGaQXm9FjpiDXjqiQr1>
+
 ## Table of Contents
 
 * [Installation](#installation)
@@ -36,7 +38,7 @@
 
 ## Test
 
-  To Test the app, you can 'npm run seed' to seed the database with test data and then 'npm start' to run the query using the test data.
+  To Test the app, you can 'npm run seed' to seed the database with test data and then 'node index.js' to run the query using the test data.
   
 ## Questions
 

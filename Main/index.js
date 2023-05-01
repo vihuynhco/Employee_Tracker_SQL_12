@@ -51,7 +51,6 @@ function viewAllEmployees() {
   );
 }
 
-//TO ADD DATA
 //ADD DEPT
 function addDept() {
   inquirer
@@ -76,7 +75,7 @@ function addDept() {
       });
     });
 }
-//Add Role name and Salary ****not working****
+//Add Role name and Salary 
 function addRole() {
   db.query("SELECT*FROM department", (err, result) => {
     //2 keys and 2 values
@@ -105,7 +104,7 @@ function addRole() {
           name: "department_id",
         },
         //needs to take in nubmer for manager_id, user can manually enter but set up logic to pull in man
-        //depart_name is coming from department; need to add to department.dept_name.   need to "READ" department id to insert into department_id)  NEED TO MAKE MANGER LIST DYANAMIC
+        //depart_name is coming from department, add to department.dept_name.  "READ" department id to insert into department_id to make manger list dynamic.
       ])
       .then((response) => {
         console.log(response)
@@ -122,43 +121,6 @@ function addRole() {
       });
       });
   });
-
-  
-  //   inquirer.prompt([
-  //     {
-  //       type: 'input',
-  //       message: "What is their title?",
-  //       name: 'title',
-  //     },
-  //     {
-  //       type: 'input',
-  //       message: "What is thier salary?",
-  //       name: 'salary',
-  //     },
-  //     {
-  //       type: 'list',
-  //       message: "Which department does the role belong to?",
-  //       choices:['Design and Development','Marketing','Sales','Fish Behavior Research','Customer Service','Fish Accounting','Fish and Culture'],
-  //       name: 'dept_name',
-  //     },
-  //   //needs to take in nubmer for manager_id, user can manually enter but set up logic to pull in man
-  // //depart_name is coming from department; need to add to department.dept_name.   need to "READ" department id to insert into department_id)  NEED TO MAKE MANGER LIST DYANAMIC
-  // ]).then((response) => {
-  //     const sql = `INSERT INTO role (title, salary, department_id)
-  //     SELECT ?,?, id
-  //     FROM department
-  //     WHERE dept_name = ?`;
-
-  //     const params =[response.title,response.salary,response.department];
-
-  //     db.query(sql, params, (err, result) => {
-  //       if (err) {
-  //         console.error(err)
-  //       }
-  //       console.log("successfully added!")
-  //       init()
-  //     });
-  //   })
 }
 
 function addEmployee() {
